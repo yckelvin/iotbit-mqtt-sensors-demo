@@ -1,6 +1,10 @@
 input.onButtonPressed(Button.A, function () {
-    ESP8266_IoT.publishMqttMessage("", "", ESP8266_IoT.QosList.Qos2)
+    temp = dht11_dht22.readData(dataType.temperature)
+    ESP8266_IoT.publishMqttMessage(convertToText(temp), "myhome/null/temperature", ESP8266_IoT.QosList.Qos2)
+    OLED.writeString("Temp: ")
+    OLED.writeNum(temp)
 })
+let temp = 0
 basic.showNumber(0)
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
 ESP8266_IoT.connectWifi("", "")
@@ -15,6 +19,16 @@ convertToText(client_id),
 )
 ESP8266_IoT.connectMQTT("192.168.0.240", 1884, false)
 basic.showNumber(2)
+OLED.init(128, 64)
+basic.showNumber(3)
+dht11_dht22.queryData(
+DHTtype.DHT11,
+DigitalPin.P2,
+true,
+false,
+true
+)
+dht11_dht22.selectTempType(tempType.celsius)
 basic.showIcon(IconNames.Yes)
 loops.everyInterval(3600000, function () {
 	
