@@ -1,6 +1,14 @@
 input.onButtonPressed(Button.A, function () {
-    ESP8266_IoT.publishMqttMessage("", "", ESP8266_IoT.QosList.Qos2)
+    distance = sonar.ping(
+    DigitalPin.P13,
+    DigitalPin.P14,
+    PingUnit.Centimeters
+    )
+    ESP8266_IoT.publishMqttMessage(convertToText(distance), "myhome/null/distance", ESP8266_IoT.QosList.Qos2)
+    OLED.writeString("Distance: ")
+    OLED.writeNum(distance)
 })
+let distance = 0
 basic.showNumber(0)
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
 ESP8266_IoT.connectWifi("", "")
@@ -15,6 +23,7 @@ convertToText(client_id),
 )
 ESP8266_IoT.connectMQTT("192.168.0.240", 1884, false)
 basic.showNumber(2)
+OLED.init(128, 64)
 basic.showIcon(IconNames.Yes)
 loops.everyInterval(3600000, function () {
 	
