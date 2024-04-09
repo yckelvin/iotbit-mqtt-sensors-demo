@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-	
+    ESP8266_IoT.publishMqttMessage("", "", ESP8266_IoT.QosList.Qos0)
 })
 basic.showNumber(0)
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
