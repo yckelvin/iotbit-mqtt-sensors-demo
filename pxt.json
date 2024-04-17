@@ -1,5 +1,5 @@
 {
-    "name": "iotbit mqtt sensors demo",
+    "name": "iotbit mqtt sensors demo rainfall",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -16,7 +16,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "6.0.25",
+        "target": "6.0.26",
         "targetId": "microbit"
     },
     "supportedTargets": [
