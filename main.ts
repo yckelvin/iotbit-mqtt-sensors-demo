@@ -6,7 +6,7 @@ input.onButtonPressed(Button.A, function () {
     )
     ESP8266_IoT.publishMqttMessage(convertToText(distance), "myhome/null/distance", ESP8266_IoT.QosList.Qos2)
     OLED.writeString("Distance: ")
-    OLED.writeNum(distance)
+    OLED.writeNumNewLine(distance)
 })
 let distance = 0
 basic.showNumber(0)
