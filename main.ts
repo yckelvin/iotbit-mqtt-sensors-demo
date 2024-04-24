@@ -1,5 +1,8 @@
 input.onButtonPressed(Button.A, function () {
-    ESP8266_IoT.publishMqttMessage("", "myhome/null/device_name", ESP8266_IoT.QosList.Qos2)
+    pins.analogWritePin(AnalogPin.P16, 1023)
+})
+input.onButtonPressed(Button.B, function () {
+    pins.analogWritePin(AnalogPin.P16, 0)
 })
 basic.showNumber(0)
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
