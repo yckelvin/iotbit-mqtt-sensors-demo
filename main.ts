@@ -1,6 +1,7 @@
 input.onButtonPressed(Button.A, function () {
     rainfall = pins.analogReadPin(AnalogPin.P2)
     ESP8266_IoT.publishMqttMessage(convertToText(rainfall), "myhome/null/rainfall", ESP8266_IoT.QosList.Qos2)
+    OLED.clear()
     OLED.writeString("Rainfall: ")
     OLED.writeNumNewLine(rainfall)
 })
@@ -20,7 +21,9 @@ convertToText(client_id),
 ESP8266_IoT.connectMQTT("192.168.0.240", 1884, false)
 basic.showNumber(2)
 OLED.init(128, 64)
-basic.showIcon(IconNames.Yes)
+if (ESP8266_IoT.isMqttBrokerConnected()) {
+    basic.showIcon(IconNames.Yes)
+}
 loops.everyInterval(3600000, function () {
 	
 })
