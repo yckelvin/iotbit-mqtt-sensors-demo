@@ -1,5 +1,5 @@
 {
-    "name": "iotbit mqtt sensors demo",
+    "name": "iotbit mqtt sensors demo startup",
     "description": "",
     "dependencies": {
         "core": "*",
