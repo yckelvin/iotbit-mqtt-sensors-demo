@@ -29,6 +29,8 @@ false,
 true
 )
 dht11_dht22.selectTempType(tempType.celsius)
+basic.showNumber(4)
+basic.pause(2000)
 if (ESP8266_IoT.isMqttBrokerConnected()) {
     basic.showIcon(IconNames.Yes)
 }
