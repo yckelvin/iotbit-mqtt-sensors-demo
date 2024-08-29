@@ -1,5 +1,10 @@
 input.onButtonPressed(Button.A, function () {
-    ESP8266_IoT.publishMqttMessage("", "myhome/null/device_name", ESP8266_IoT.QosList.Qos2)
+    pins.servoWritePin(AnalogPin.P0, 0)
+    OLED.writeStringNewLine("Return to zero")
+})
+input.onButtonPressed(Button.B, function () {
+    pins.servoWritePin(AnalogPin.P0, 90)
+    OLED.writeStringNewLine("Turn 90 degree")
 })
 basic.showNumber(0)
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
